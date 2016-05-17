@@ -101,7 +101,7 @@
 [rerere]
 	enabled = true
 [core]
-	autocrlf = true
+	autocrlf = false
 	trustctime = false
 	editor = vim
 	filemode = false
