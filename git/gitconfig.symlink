@@ -1,0 +1,120 @@
+[user]
+	email = moser.antoine@gmail.com
+	name = Antoine Moser
+[alias]
+  sts = status -s
+  st = status -sb
+
+  cl = clone
+  
+  ci = commit
+  ca = commit --amend
+  amend = commit --amend
+  caa = commit -a --amend -C HEAD
+  filelog = log -u
+  fl = log -u
+
+  ai = add --interactive
+
+  cp = cherry-pick
+  co = checkout
+  br = branch
+  bra = branch -ra
+  #list commands
+  le = log --oneline --decorate
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ls1 = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  lds = log --pretty=format:"%C(yellow)%h\\ %C(green)%ad%Cred%d\\ %Creset%s%C(cyan)\\ [%cn]" --decorate --date=short --graph
+  ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+  lm = log --decorate --graph --oneline --merges 
+  lc  = "!f() { git ll "$1"^.."$1"; }; f"
+  lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+  tip = log -n 1 --abbrev-commit --decorate
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty='format:%C(auto)%h %C(cyan)[%ar]%C(auto)%d %C(yellow)%ae %Creset%s' --abbrev-commit --all
+  tig = log --graph --boundary --left-right --cherry-pick --decorate HEAD...FETCH_HEAD
+  graph = log --graph -10 --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
+  precommit = diff --cached --diff-algorithm=minimal -w
+  
+  unstage = reset HEAD
+  #list all aliases
+  la = "!git config -l | grep alias | cut -c 7-"
+  dc = diff --cached
+  #list modified files in last commit
+  dl = "!git ll -1"
+  #diff last commit 
+  dlc = diff --cached HEAD^
+  dr  = "!f() { git diff -w "$1"^.."$1"; }; f"
+  diffr  = "!f() { git diff "$1"^.."$1"; }; f"
+  dw = diff --word-diff
+  dcw = diff --color-words
+  dcwr = diff --color-word=.
+
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+  nevermind = !git reset --hard HEAD && git clean -d -f
+
+  #stash
+  sl = stash list
+  stashes = stash list
+  sa = stash apply
+  ss = stash save
+  sp = stash pop
+	last = log -1 --stat
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+
+  clean-merged = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
+[color]
+  branch = auto
+  diff = auto
+  status = auto
+	ui = true
+
+[color "branch"]
+  current = red reverse
+  local = cyan
+  remote = green
+
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red bold
+  new = green
+  plain = white
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+	interactive = auto
+[merge]
+   tool = kdiff3
+	conflictStyle = diff3
+[mergetool "kdiff3"]
+   cmd = \"C:\\\\Program Files (x86)\\\\KDiff3\\\\kdiff3\" $BASE $LOCAL $REMOTE -o $MERGED
+[http]
+    sslVerify = false
+[rerere]
+	enabled = true
+[core]
+	autocrlf = true
+	trustctime = false
+	editor = vim
+	filemode = false
+[help]
+  autocorrect = 1
+[push]
+	default = upstream
+[pull]
+	rebase = preserve
+[credential]
+	helper = cache --timeout=3600
+[mergetool]
+	keeptemporaries = false
+	keepbackups = false
+	prompt = false
+	trustexitcode = false
