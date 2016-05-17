@@ -20,4 +20,5 @@ wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbol
 mv PowerlineSymbols.otf ~/.fonts/
 fc-cache -vf ~/.fonts/
 
-rm -rf ~/Downloads/fonts
+rm -rf ~/Downloads/fonts/
+
