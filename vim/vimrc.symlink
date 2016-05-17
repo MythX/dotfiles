@@ -1,0 +1,192 @@
+set notimeout
+set nocompatible
+set laststatus=2
+set ruler
+syntax on
+
+" Vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles
+" Theme
+Bundle 'altercation/vim-colors-solarized'
+" Theme
+Bundle 'vim-scripts/molokai'
+" Git wrapper
+Bundle 'tpope/vim-fugitive'
+" File tree
+Bundle 'scrooloose/nerdtree'
+" Full path finder
+Bundle 'kien/ctrlp.vim'
+" Tab completion
+Bundle 'ervandew/supertab'
+" Code completion
+"Bundle 'Valloric/YouCompleteMe'
+" Zoom <c-w>o
+Bundle 'vim-scripts/ZoomWin'
+" Statusline
+Bundle 'bling/vim-airline'
+" Char jumping
+Bundle 'edsono/vim-matchit'
+" Buffer Navigation
+Bundle 'jeetsukumaran/vim-buffergator'
+" Javascript support
+Bundle 'jelera/vim-javascript-syntax'
+Bundle 'pangloss/vim-javascript'
+"Bundle 'marijnh/tern_for_vim'
+" Indenting
+Bundle 'nathanaelkane/vim-indent-guides'
+" Markdown support
+Bundle 'tpope/vim-markdown'
+" Coffee script support
+Bundle 'kchmck/vim-coffee-script'
+" GIT support
+Bundle 'tpope/vim-git'
+" Ruby support
+Bundle 'vim-ruby/vim-ruby'
+" Syntax checking
+Bundle 'scrooloose/syntastic'
+" Command line
+Bundle 'sjl/clam.vim'
+" Less support
+Bundle 'groenewege/vim-less'
+" Handlebars support
+Bundle 'nono/vim-handlebars'
+" NGINX support
+Bundle 'vim-scripts/nginx.vim'
+" Text auto align
+Bundle 'godlygeek/tabular'
+" Snippets
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/vim-snippets'
+" Utility
+Bundle 'tomtom/tlib_vim'
+" Utility
+Bundle 'MarcWeber/vim-addon-mw-utils'
+" Dart
+Bundle 'dart-lang/dart-vim-plugin'
+" Automate closing qoat, brackets, etc.
+Bundle 'Raimondi/delimitMate'
+" Go
+Bundle 'fatih/vim-go'
+" Yaml
+Bundle 'stephpy/vim-yaml'
+" Docker
+Bundle 'ekalinin/Dockerfile.vim'
+" Asciidoc
+Bundle 'dagwieers/asciidoc-vim'
+" JSX
+Bundle 'mxw/vim-jsx'
+
+" load the plugin and indent settings for the detected filetype
+filetype plugin indent on
+
+" Numbers
+set number
+
+" Set encoding
+set encoding=utf-8
+
+" Backup and swap files
+set backupdir=~/.vim/backup//
+set directory=~/.vim/temp//
+
+" Searching
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Tab completion
+set wildmode=list:longest,list:full
+set wildignore+=*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*
+
+" Default colorscheme to solarized
+set background=dark
+let g:solarized_termcolors=256
+colorscheme solarized
+set cursorline
+
+" Whitespace stuff
+set nowrap
+set expandtab
+set backspace=indent,eol,start
+set list
+set listchars=tab:»·,trail:·,nbsp:_,extends:>,precedes:<
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" Move easily between windows
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+map <F2> :NERDTreeToggle <CR>
+
+" Avoid 'escaping' from home row
+imap jj <Esc>
+"imap <C-Space> <C-X><C-O>
+
+" CtrlP
+let g:ctrlp_working_path_mode = 0 " don’t manage working directory
+let g:ctrlp_switch_buffer = 'et' "don't jump if the buffer is not in the current tab
+
+" Syntastic on opening file
+let g:syntastic_check_on_open=1
+
+" JS Syntastic checkers
+let g:syntastic_javascript_checkers = ['eslint']
+
+" Disable Go install
+let g:go_disable_autoinstall = 1
+
+" Mouse
+set mouse+=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+
+if has('gui_running')
+	set guifont=Monospace\ 12
+endif
+
+" tab navigation like firefox
+nnoremap <silent> <A-Left>  :tabprevious<CR>
+nnoremap <silent> <A-Right> :tabnext<CR>
+nnoremap <silent> <C-t>     :tabnew<CR>
+inoremap <silent> <A-Left>  <Esc>:tabprevious<CR>
+inoremap <silent> <A-Right> <Esc>:tabnext<CR>
+inoremap <silent> <C-t>     <Esc>:tabnew<CR>
+
+" Enable spellchecking for Markdown
+autocmd FileType markdown setlocal spell
+autocmd FileType rst setlocal spell
+" Automatically wrap at 80 characters for Markdown and reStructuredText
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+autocmd BufRead,BufNewFile *.rst setlocal textwidth=80
+
+" Make it obvious where 80 characters is
+set colorcolumn=+1
+
+" Autocomplete with dictionary words when spell check is on
+set complete+=kspell
+
+" Always use vertical diffs
+set diffopt+=vertical
+
+" Local config
+if filereadable($HOME . "/.vimrc.local")
+    source ~/.vimrc.local
+endif
