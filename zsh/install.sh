@@ -14,11 +14,10 @@ cd fonts
 
 echo 'Download Powerline fonts'
 
-wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+git clone https://github.com/powerline/fonts
 
-mv PowerlineSymbols.otf ~/.fonts/
-fc-cache -vf ~/.fonts/
+cd fonts
+./install.sh
 
 rm -rf ~/Downloads/fonts/
 
