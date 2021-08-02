@@ -1,6 +1,6 @@
 [user]
-	email = moser.antoine@gmail.com
-	name = Antoine Moser
+  email = moser.antoine@gmail.com
+  name = Antoine Moser
 [alias]
   sts = status -s
   st = status -sb
@@ -64,15 +64,15 @@
   sa = stash apply
   ss = stash save
   sp = stash pop
-	last = log -1 --stat
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+  last = log -1 --stat
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
 
   clean-merged = !git branch --merged | grep -v \"\\*\" | xargs -n 1 git branch -d
 [color]
   branch = auto
   diff = auto
   status = auto
-	ui = true
+  ui = true
 
 [color "branch"]
   current = red reverse
@@ -90,31 +90,29 @@
   added = yellow
   changed = green
   untracked = cyan
-	interactive = auto
+  interactive = auto
 [merge]
-   tool = kdiff3
-	conflictStyle = diff3
-[mergetool "kdiff3"]
-   cmd = \"C:\\\\Program Files (x86)\\\\KDiff3\\\\kdiff3\" $BASE $LOCAL $REMOTE -o $MERGED
+  conflictStyle = diff3
 [http]
-    sslVerify = false
+  sslVerify = false
 [rerere]
-	enabled = true
+  enabled = false
 [core]
-	autocrlf = false
-	trustctime = false
-	editor = vim
-	filemode = false
+  autocrlf = false
+  trustctime = false
+  editor = vim
+  filemode = false
 [help]
   autocorrect = 1
 [push]
-	default = upstream
+  default = upstream
 [pull]
-	rebase = preserve
+  rebase = preserve
 [credential]
-	helper = cache --timeout=3600
+  helper = cache --timeout=3600
 [mergetool]
-	keeptemporaries = false
-	keepbackups = false
-	prompt = false
-	trustexitcode = false
+  keeptemporaries = false
+  keepbackups = false
+  prompt = false
+  trustexitcode = false
+
